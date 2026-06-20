@@ -1,5 +1,19 @@
 from Mapa import gerar_mapa, imprimir_mapa
 
+conquistas = set() # Criei um set(conjunto) para quardar as conquistas do jogador, sem duplicata em caso de completar a etapa da história do jogo mais de uma vez.
+
+def conquistas_desbloqueadas(conquista_jogador):
+    global conquistas # Dizemos ao python que queremos mexer na variável coquistas, que está fora da função, o seja ela é uma variável global.
+
+    if conquista_jogador not in conquistas:
+        conquistas.add(conquista_jogador)
+        print(f"\n🏆 CONQUISTA DESBLOQUEADA: [{conquista_jogador}]")
+
+def exibir_conquistas(suas_conquistas):
+    print("Suas Conquistas Coletadas:")
+    for conquista in suas_conquistas:
+        print(f"- {conquista}")
+
 def init_game(nome_user, idade_user):
     print("-"*10, "RUN TO YOUR LIFE", "-"*10)
     print("Carregando status do jogador... ")
@@ -89,6 +103,7 @@ def init_game(nome_user, idade_user):
                 break
 
             if jogador_linha == 27 and jogador_coluna == 27: # A posição do mapa onde está localizada a casa que o personagem deve encontrar.
+                conquista1 = "Porto Seguro: Você encontrou a casa da senhora que irá te ajudar a derrotar o montro!"
                 print("Você encontrou a casa e entra nela para se esconder do monstro.")
                 print("O monstro bate algumas vezes na porta, mas desiste e vai embora.")
                 print("Nesse momento, você conhece uma senhora que mora naquela casa, ela fala sobre o monstro para você e te dá uma informação muito inportante.")
@@ -96,9 +111,11 @@ def init_game(nome_user, idade_user):
                 print("Você sai da casa da mulher para tentar encontra-lo, e consegue, o monstro novamente começa a te seguir pela floreta.")
                 print("Mas, o que são essas instruções que podem matar o montro? A resposta é, uma armadilha. Parece fraco, mas pode prender fácilmente o monstro e acabar com essa perseguição.")
                 print("Você precisa atrai-lo para essa armadilha, mas como você fará isso? ")
+                conquistas_desbloqueadas(conquista1)
                 continue
 
             if monstro_linha == 16 and monstro_coluna == 19: # Onde está localizada a armadilha para derrotar o monstro.
+                conquista2 = "Caçador de Monstros: Você conseguiu derrotar o monstro que estava te perseguindo pela floreta, usando as intruções que a velha senhora te deu."
                 print("Ufa! Parece de que você derrotou o monstro. Por enquanto!")
                 print("Na verdade, a armadilha para matar o monstro era um buraco. Um buraco beeeeeeemm fundo.")
                 print("Se ele caiu nesse buraco, ele provavelmente nunca mais vai sair de lá.")
@@ -109,9 +126,11 @@ def init_game(nome_user, idade_user):
                 print("Em breve, tenha a certeza que aquele monstro vai voltar a segui-lo.")
                 print("E com esse pensamento, você segue a vida explorando o mundo a fora, mas com a tristeza de que a sua familia nunca mais irá voltar a ser como antes...")
                 print("FIM DE JOGO! POR EQUANTO")
+                conquistas_desbloqueadas(conquista2)
+                exibir_conquistas(conquistas)
                 break
 
-            print("\n" * 2) # Limpa o terminal visualmente.
+        print("\n" * 2) # Limpa o terminal visualmente.
 
 if __name__== "__main__":
 
