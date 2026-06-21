@@ -98,7 +98,7 @@ def init_game(nome_user, idade_user):
 
 
             if jogador_linha == monstro_linha and jogador_coluna == monstro_coluna:
-                imprimir_mapa(mapa)
+                imprimir_mapa_com_nevoa(mapa, jogador_linha, jogador_coluna)
                 print("\n👹 O MONSTRO TE PEGOU! GAME OVER!")
                 break
 
