@@ -1,5 +1,3 @@
-import random
-
 def imprimir_mapa_com_nevoa(mapa, jogador_l, jogador_c):
     raio_visao = 2
     print("\n" * 3)
