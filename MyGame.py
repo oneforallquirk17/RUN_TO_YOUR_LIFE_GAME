@@ -1,4 +1,4 @@
-from Mapa import gerar_mapa, imprimir_mapa
+from Mapa import gerar_mapa, imprimir_mapa_com_nevoa
 
 conquistas = set() # Criei um set(conjunto) para quardar as conquistas do jogador, sem duplicata em caso de completar a etapa da história do jogo mais de uma vez.
 
@@ -52,7 +52,7 @@ def init_game(nome_user, idade_user):
         mapa[armadilha_monstro_linha][armadilha_monstro_coluna] = "🕳️"
 
         while True:
-            imprimir_mapa(mapa)
+            imprimir_mapa_com_nevoa(mapa, jogador_linha, jogador_coluna)
 
             movimento_personagem = input("\nPara onde ir? (W: Cima, A: Esquerda, S: Baixo, D: Direita): ").upper()
 
@@ -102,7 +102,7 @@ def init_game(nome_user, idade_user):
                 print("\n👹 O MONSTRO TE PEGOU! GAME OVER!")
                 break
 
-            if jogador_linha == 27 and jogador_coluna == 27: # A posição do mapa onde está localizada a casa que o personagem deve encontrar.
+            if jogador_linha == 47 and jogador_coluna == 47: # A posição do mapa onde está localizada a casa que o personagem deve encontrar.
                 conquista1 = "Porto Seguro: Você encontrou a casa da senhora que irá te ajudar a derrotar o montro!"
                 print("Você encontrou a casa e entra nela para se esconder do monstro.")
                 print("O monstro bate algumas vezes na porta, mas desiste e vai embora.")
